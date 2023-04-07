@@ -12,6 +12,7 @@ import { RegisterFormComponent } from './auth/register-form/register-form.compon
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { MaterialModule } from './module/material/material.module';
 import { WelcomePageComponent } from './layout/welcome-page/welcome-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { WelcomePageComponent } from './layout/welcome-page/welcome-page.compone
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
