@@ -8,8 +8,11 @@ import { HomeComponent } from './layout/home/home.component';
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { InfobarComponent } from './component/infobar/infobar.component';
 import { StartMainComponent } from './component/start-main/start-main.component';
-import { RegisterFormComponent } from './layout/register-form/register-form.component';
-import { LoginFormComponent } from './layout/login-form/login-form.component';
+import { RegisterFormComponent } from './auth/register-form/register-form.component';
+import { LoginFormComponent } from './auth/login-form/login-form.component';
+import { MaterialModule } from './module/material/material.module';
+import { WelcomePageComponent } from './layout/welcome-page/welcome-page.component';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +22,14 @@ import { LoginFormComponent } from './layout/login-form/login-form.component';
     InfobarComponent,
     StartMainComponent,
     RegisterFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
