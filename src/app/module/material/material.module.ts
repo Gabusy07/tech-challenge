@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 
@@ -9,7 +10,8 @@ import {MatChipsModule} from '@angular/material/chips';
   imports: [
     CommonModule
   ], exports: [
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule { }
