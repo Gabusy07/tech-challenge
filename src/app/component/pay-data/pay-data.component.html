@@ -1,33 +1,14 @@
-<div class="container-fluid row">
 
-  
-    
-<div class="col-5">
+    <div class="container ">
     <div class="row">
       <img class="col-4" src="" alt="">
       <h3 class="col-5">$21</h3>
       <p class="col-2">+2.5%</p>
     </div>
-    <canvas baseChart
+    <canvas baseChart class="w-100"
       [type]="'line'"
       [data]="lineChartData"
       [options]="lineChartOptions"
       [legend]="lineChartLegend">
     </canvas>
   </div>
-
-  <div class="col-5">
-    <div class="row">
-      <img class="col-4" src="" alt="">
-      <h3 class="col-5">$55</h3>
-      <p class="col-2">-1.5%</p>
-    </div>
-    <canvas baseChart 
-      [type]="'line'"
-      [data]="lineChart2Data"
-      [options]="lineChart2Options"
-      [legend]="lineChart2Legend">
-    </canvas>
-  </div>
-
-</div>

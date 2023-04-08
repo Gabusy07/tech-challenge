@@ -18,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgChartsModule } from 'ng2-charts';
 import { PayDataComponent } from './component/pay-data/pay-data.component';
 import { CardInfoComponent } from './component/card-info/card-info.component';
+import { TransactionComponent } from './component/transaction/transaction.component';
+import { HeaderComponent } from './component/header/header.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { CardInfoComponent } from './component/card-info/card-info.component';
     WelcomePageComponent,
     VirtualKeyboardComponent,
     PayDataComponent,
-    CardInfoComponent
+    CardInfoComponent,
+    TransactionComponent,
+    HeaderComponent
    
   ],
   imports: [
