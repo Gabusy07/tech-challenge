@@ -10,6 +10,13 @@ import { ChartConfiguration, ChartOptions, ChartType } from "chart.js";
 export class PayDataComponent {
 
   title = 'ng2-charts-demo';
+  chart_label = ['','','','','',];
+  chart_borderColor = "blue";
+  chart_data = [ 10, 20, 50, 20, 27, 49 ];
+
+  price: String = "55"
+  increase: String = "+2.5"
+
 
 
   
@@ -17,20 +24,14 @@ export class PayDataComponent {
   //-----------------------------------------------------------
 
   public lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: [
-      '',
-      '',
-      '',
-      '',
-      '',
-    ],
+    labels: this.chart_label,
     datasets: [
       {
-        data: [ 10, 20, 50, 20, 27, 49 ],
+        data: this.chart_data,
         label: '',
         fill: false,
         tension: 0.5,
-        borderColor: 'blue',
+        borderColor: this.chart_borderColor,
         backgroundColor: 'rgba(20,120,0,0.3)'
       }
     ]
