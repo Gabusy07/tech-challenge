@@ -3,18 +3,34 @@
       <div class="card-body">
         <h5 class="card-title">Cargar datos</h5>
 
-        <form [formGroup]="formulario" (submit)="enviar()">
+        <form [formGroup]="form" (submit)="enviar()">
           <label>Nombre:</label>
-          <input type="text" formControlName="nombre" />
+          <input  name="name" [ngClass]="{'is-invalid' : Name?.errors && Name?.touched, 'is-valid' : !Name?.errors && Name?.touched}" class="form-control" type="text" formControlName="name" />
+          <div *ngIf="Name?.errors && Name?.touched">
+            <small *ngIf="Name?.hasError('required')" class="text-danger">El campo nombre no debe estar vacio</small>
+            <small *ngIf="Name?.errors?.['maxlength']" class="text-danger">El nombre debe ser mas corto</small>
+            <small *ngIf="Name?.errors?.['minlength']" class="text-danger">El nombre debe ser mas largo</small>
+            <small *ngIf="Name?.errors?.['pattern']" class="text-danger">Tu nombre solo puede tener con letras</small>
+        </div>
         
           <label>Email:</label>
-          <input type="email" formControlName="email" />
+          <input  name="email" [ngClass]="{'is-invalid' : Email?.errors && Email?.touched, 'is-valid' : !Email?.errors && Email?.touched}"  class="form-control" type="email" required formControlName="email" />
+
+          <div *ngIf="Email?.errors && Email?.touched">
+            <small *ngIf="Email?.hasError('required')" class="text-danger">El campo email no debe estar vacio</small>
+            <small *ngIf="Email?.hasError('email')" class="text-danger">El email ingresado no es valido</small>
+          </div>
 
           <label>Contraseña:</label>
-          <input type="password" formControlName="password" />
+          <input name="password" [ngClass]="{'is-invalid' : Password?.errors && Password?.touched, 'is-valid' : !Password?.errors && Password?.touched}" class="form-control" type="password" formControlName="password" />
         
+          <div *ngIf="Password?.errors && Password?.touched">
+            <small *ngIf="Password?.hasError('required')" class="text-danger">El campo contraseña no debe estar vacio</small>
+            <small *ngIf="Password?.errors?.['minlength']" class="text-danger">El campo contraseña debe ser mas larga</small>
+            <small *ngIf="Password?.errors?.['maxlength']" class="text-danger">El campo contraseña debe ser mas corta</small>
+         </div>
         
-          <button type="submit" [disabled]="!formulario.valid" class="btn btn-light m-5 btn-block">Enviar</button>
+          <button type="submit" [disabled]="!form.valid" class="btn btn-light m-5 btn-block">Enviar</button>
         </form>
 
         <p class="text-center">Aun no estas registrado? <span>Registrate <a routerLink="/home">aqui</a></span></p>
