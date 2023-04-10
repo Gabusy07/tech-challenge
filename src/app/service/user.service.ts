@@ -15,7 +15,7 @@ export class UserService {
   //metodos conexion con servidor crear, leer, loggear, eliminar, modificar
   createUser(u: User): Observable<object>{
     const headers = this.getheader();
-    return this.request.post<User>(this.url+"/add", u);
+    return this.request.post<User>(this.url, u, {headers});
   }
 
 
@@ -30,8 +30,7 @@ export class UserService {
   
     const token:string = localStorage['token'];
     const headers= new HttpHeaders({
-      'Content-Type':  'application/json',
-      Authorization: token
+      'Content-Type':  'application/json'
     })
     return headers;
   }

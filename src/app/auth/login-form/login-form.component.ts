@@ -15,7 +15,7 @@ export class LoginFormComponent {
   public form:FormGroup
 
   constructor(private readonly formBuilder : FormBuilder, private changeFormService : ChangeFormService,
-    private userService: UserService
+    private userService: UserService, private route: Router
     ) {
 
     this.form = this.initForm();
@@ -53,19 +53,19 @@ export class LoginFormComponent {
   send() {
     const user:User = this.form.value;
     let u = new User();
-    let userResponse: User;
+    let password:String = "";
 
     u.name = user.name;
     u.email = user.email;
     u.password = user.password;
     if (this.form.valid) {
       this.userService.getUser(u.email).subscribe({
-        next: data=> userResponse.password = data.password,
-        error: err => {
-          console.log(err);
-        },
+        next: data=> {password = data.password},
+      
         complete: () => {
-          if(u.password == userResponse.password){
+          if(u.password == password){
+            this.route.navigate(['/home'])
+
             
 
           }
