@@ -20,6 +20,7 @@ import { PayDataComponent } from './component/pay-data/pay-data.component';
 import { CardInfoComponent } from './component/card-info/card-info.component';
 import { TransactionComponent } from './component/transaction/transaction.component';
 import { HeaderComponent } from './component/header/header.component';
+import { HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -36,17 +37,17 @@ import { HeaderComponent } from './component/header/header.component';
     CardInfoComponent,
     TransactionComponent,
     HeaderComponent
-   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule,
     NgbModule,
     ReactiveFormsModule,
     MatButtonModule,
-    NgChartsModule
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

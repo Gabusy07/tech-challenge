@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { FloatLabelType } from '@angular/material/form-field';
+import { ChangeFormService } from 'src/app/service/change-form.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -8,17 +7,14 @@ import { FloatLabelType } from '@angular/material/form-field';
   styleUrls: ['./welcome-page.component.css']
 })
 export class WelcomePageComponent {
-  hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto' as FloatLabelType);
-  options = this._formBuilder.group({
-    hideRequired: this.hideRequiredControl,
-    floatLabel: this.floatLabelControl,
-  });
+ 
 
-  constructor(private _formBuilder: FormBuilder) {}
-
-  getFloatLabelValue(): FloatLabelType {
-    return this.floatLabelControl.value || 'auto';
+  constructor(private changeFormService : ChangeFormService){
+    this.change = this.changeFormService.getData()
   }
+
+  
+
+  change:Boolean
 
 }

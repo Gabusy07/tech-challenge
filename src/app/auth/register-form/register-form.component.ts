@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/model/User';
+import { ChangeFormService } from 'src/app/service/change-form.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -10,7 +13,10 @@ export class RegisterFormComponent {
 
   form!: FormGroup;
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder, private changeFormService : ChangeFormService,
+     private userService: UserService
+    ){
+    this.change = this.changeFormService.getData()
   }
 
   ngOnInit() {
@@ -34,10 +40,27 @@ export class RegisterFormComponent {
     return this.form.get('password');
   }
 
-  enviar() {
+  send() {
+    const user:User = this.form.value;
+    let u = new User();
+
+    u.name = user.name;
+    u.email = user.email;
+    u.password = user.password;
     if (this.form.valid) {
-      // Procesar el formulario aquí
+      this.userService.createUser(u).subscribe({
+        next: ()=> alert("usuario creado con exito"),
+        error: err => alert(err)
+        
+      })
     }
   }
+
+  changeForm(){
+    this.changeFormService.change();
+  }
+
+  
+  change: Boolean
 
 }

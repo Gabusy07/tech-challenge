@@ -1,33 +1,31 @@
-<div class="col-lg-12 m-1 p-1">
-    <div class="">
-      <div class="card-body">
-        <h5 class="card-title">Cargar datos</h5>
+<div class="container">
+  <div class="card-body">
+    <h5 class="card-title">Ingresar datos</h5>
 
-        <!-- Multi Columns Form -->
-        <form class="row g-3">
-          
-          <div class="col-10">
-            <label for="input" class="form-label">Documento</label>
-            <input type="number" class="form-control" id="inputAddres5s">
-          </div>
-          <div class="col-md-10">
-              <label for="input" class="form-label">Tipo de documento</label>
-              <select id="input" class="form-select">
-                <option selected>Elegir</option>
-                <option>DNI</option>
-                <option>Pasaporte</option>
-              </select>
-            </div>
-          <div class="col-5">
-            <label for="input" class="form-label">Clave</label>
-            <input type="password" class="form-control" id="inputAddress2">
-          </div>
-          
-          <button type="submit" class="btn btn-light btn-lg m-4">Ingresar</button>
+    <form [formGroup]="form" (ngSubmit)="send()">
     
-        </form>
+      <label>Email:</label>
+      <input  name="email" [ngClass]="{'is-invalid' : Email?.errors && Email?.touched, 'is-valid' : !Email?.errors && Email?.touched}"  class="form-control" type="email" required formControlName="email" />
+
+      <div *ngIf="Email?.errors && Email?.touched">
+        <small *ngIf="Email?.hasError('required')" class="text-danger">El campo email no debe estar vacio</small>
+        <small *ngIf="Email?.hasError('email')" class="text-danger">El email ingresado no es valido</small>
+      </div>
+
+      <label>Contraseña:</label>
+      <input name="password" [ngClass]="{'is-invalid' : Password?.errors && Password?.touched, 'is-valid' : !Password?.errors && Password?.touched}" class="form-control" type="password" formControlName="password" />
+    
+      <div *ngIf="Password?.errors && Password?.touched">
+        <small *ngIf="Password?.hasError('required')" class="text-danger">El campo contraseña no debe estar vacio</small>
+        <small *ngIf="Password?.errors?.['minlength']" class="text-danger">El campo contraseña debe ser mas larga</small>
+        <small *ngIf="Password?.errors?.['maxlength']" class="text-danger">El campo contraseña debe ser mas corta</small>
+     </div>
+    <div class="text-center">
+      <button  type="submit" [disabled]="!form.valid" class="btn btn-light m-5 btn-block">Ingresar</button>
+    </div>
+    </form>
 
 
-        <p class="text-center">Aun no estas registrado? <span>Registrate <a routerLink="/signin">aqui</a></span></p>
-
-  </div>
+    <p class="text-center">No estas registrado? <span>Ingresa <a (click)="changeForm()">aqui</a></span></p>
+ </div>
+</div>

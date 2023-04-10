@@ -2,3 +2,15 @@
     background-image: url(src/assets/white-background-abstract-geometric-vector-260nw-1727278480.jpg);
     background-size: cover;
 }
+
+.right-container{
+
+    color: white;
+    background: linear-gradient(135deg, #0a0d2e, #143aac);
+}
+
+span{
+    color: blueviolet;
+    font-weight: bolder;
+    font-size: larger;
+}

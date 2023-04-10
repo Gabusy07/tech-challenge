@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/model/User';
+import { ChangeFormService } from 'src/app/service/change-form.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -10,8 +14,12 @@ export class LoginFormComponent {
 
   public form:FormGroup
 
-  constructor(private readonly formBuilder : FormBuilder) {
+  constructor(private readonly formBuilder : FormBuilder, private changeFormService : ChangeFormService,
+    private userService: UserService
+    ) {
+
     this.form = this.initForm();
+    this.change = this.changeFormService.getData()
     
    }
 
@@ -36,4 +44,42 @@ export class LoginFormComponent {
     return this.form.get('password');
   }
 
+
+  changeForm(){
+    this.changeFormService.change()
+    
+  }
+
+  send() {
+    const user:User = this.form.value;
+    let u = new User();
+    let userResponse: User;
+
+    u.name = user.name;
+    u.email = user.email;
+    u.password = user.password;
+    if (this.form.valid) {
+      this.userService.getUser(u.email).subscribe({
+        next: data=> userResponse.password = data.password,
+        error: err => {
+          console.log(err);
+        },
+        complete: () => {
+          if(u.password == userResponse.password){
+            
+
+          }
+          else{
+            alert("contraseña incorrecta")
+          }
+        }
+        
+      })
+    }
+  }
+
+  
+  change: Boolean
 }
+
+

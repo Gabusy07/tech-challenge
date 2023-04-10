@@ -3,7 +3,7 @@
       <div class="card-body">
         <h5 class="card-title">Cargar datos</h5>
 
-        <form [formGroup]="form" (submit)="enviar()">
+        <form [formGroup]="form" (submit)="send()">
           <label>Nombre:</label>
           <input  name="name" [ngClass]="{'is-invalid' : Name?.errors && Name?.touched, 'is-valid' : !Name?.errors && Name?.touched}" class="form-control" type="text" formControlName="name" />
           <div *ngIf="Name?.errors && Name?.touched">
@@ -30,8 +30,13 @@
             <small *ngIf="Password?.errors?.['maxlength']" class="text-danger">El campo contraseña debe ser mas corta</small>
          </div>
         
+         <div class="text-center">
           <button type="submit" [disabled]="!form.valid" class="btn btn-light m-5 btn-block">Enviar</button>
+        </div>
         </form>
 
-        <p class="text-center">Ya estas registrado? <span>Ingresa <a routerLink="/login">aqui</a></span></p>
+
+        <p class="text-center">Ya estas registrado? <span>Ingresa <a (click)="changeForm()">aqui</a></span></p>
+    </div>
+  </div>
 

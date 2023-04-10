@@ -1,15 +1,20 @@
-<div class="row">
+<div class="row h-100">
 
-  <div class="col-6 container" style="display: grid; place-items: center;">
+  <div class="col-6 container h-100" style="display: grid; place-items: center;">
       <h2 class="m-1">Bienvenido a <span>unicomer</span></h2>
   </div>
-  <div class="col-6 bg-secondary">
+  <div class="col-6 h-100 right-container">
       <div>
           <h2>LOGO</h2>
       </div>
-      <div class="row">
+      <div *ngIf="change ; else elseBlock" class="row">
+        <app-login-form></app-login-form> 
+          
       </div>
-      <app-register-form></app-register-form>    
+      <ng-template #elseBlock>
+        <app-register-form></app-register-form> 
+      </ng-template>
+      
   </div>
 </div>
 
