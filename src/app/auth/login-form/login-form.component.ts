@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { ChangeFormService } from 'src/app/service/change-form.service';
+import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginFormComponent {
   public form:FormGroup
 
   constructor(private readonly formBuilder : FormBuilder, private changeFormService : ChangeFormService,
-    private userService: UserService, private route: Router
+    private userService: UserService, private route: Router, private storage : LocalStorageService
     ) {
 
     this.form = this.initForm();
@@ -61,8 +62,8 @@ export class LoginFormComponent {
     if (this.form.valid) {
       this.userService.getUser(u.email).subscribe({
         next: data=> {
-          console.log(data)
           password = data.password
+          this.storage.addNameToStorage(data.name.valueOf())
         },
       
         complete: () => {

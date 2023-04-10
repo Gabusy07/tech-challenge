@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { User } from 'src/app/model/User';
+import { LocalStorageService } from 'src/app/service/local-storage.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class HeaderComponent {
 
-  constructor(private readonly userService : UserService){
+  constructor(private readonly storageService : LocalStorageService, ){
     
   }
 
@@ -18,14 +19,11 @@ export class HeaderComponent {
    
   }
 
-  initUser(): void{
-    this.userService.getUser("").subscribe({
-      next : data => this.user = data
-    }
-
-    )
+  getUserNameFromStorage(): void{
+    this.storageService.getName()
+    
   }
 
-  user!:User
+  userName:string = ""
 
 }
