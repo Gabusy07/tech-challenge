@@ -23,15 +23,6 @@ html, body { height: 100%; }
     text-decoration: none;
   }
   
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Nunito", sans-serif;
-  }
-  
   #main {
     margin-top: 60px;
     padding: 20px 30px;
@@ -95,7 +86,7 @@ html, body { height: 100%; }
   }
   
   .dropdown-menu .dropdown-header,
-  .dropdown-menu .dropdown-footer {
+  .dropdown-menu  {
     text-align: center;
     font-size: 15px;
     padding: 10px 25px;
@@ -229,36 +220,6 @@ html, body { height: 100%; }
     box-shadow: none;
   }
   
-  .accordion-item {
-    border: 1px solid #ebeef4;
-  }
-  
-  .accordion-button:focus {
-    outline: 0;
-    box-shadow: none;
-  }
-  
-  .accordion-button:not(.collapsed) {
-    color: #012970;
-    background-color: #f6f9ff;
-  }
-  
-  .accordion-flush .accordion-button {
-    padding: 15px 0;
-    background: none;
-    border: 0;
-  }
-  
-  .accordion-flush .accordion-button:not(.collapsed) {
-    box-shadow: none;
-    color: #4154f1;
-  }
-  
-  .accordion-flush .accordion-body {
-    padding: 0 0 15px 0;
-    color: #3e4f6f;
-    font-size: 15px;
-  }
   
 
   .nav-tabs-bordered {
