@@ -12,8 +12,8 @@ export class SidebarService {
   constructor(private request:HttpClient) { }
 
 
-  getAll():Observable<SidebarOption>{
-    return this.request.get<SidebarOption>(this.url); 
+  getAll():Observable<SidebarOption[]>{
+    return this.request.get<SidebarOption[]>(this.url); 
   }
 
   private url = `${baseUrl}/api/menu`;
