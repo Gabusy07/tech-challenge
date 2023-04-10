@@ -60,14 +60,15 @@ export class LoginFormComponent {
     u.password = user.password;
     if (this.form.valid) {
       this.userService.getUser(u.email).subscribe({
-        next: data=> {password = data.password},
+        next: data=> {
+          console.log(data)
+          password = data.password
+        },
       
         complete: () => {
           if(u.password == password){
             this.route.navigate(['/home'])
-
             
-
           }
           else{
             alert("contraseña incorrecta")
