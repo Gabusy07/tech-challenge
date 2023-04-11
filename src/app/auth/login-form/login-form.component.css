@@ -28,3 +28,7 @@ form {
   input[type="submit"]:hover {
     background-color: #2980b9;
   }
+
+  a{
+    color: blueviolet;
+  }
