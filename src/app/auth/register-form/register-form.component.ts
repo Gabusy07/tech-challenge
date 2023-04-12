@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { ChangeFormService } from 'src/app/service/change-form.service';
 import { UserService } from 'src/app/service/user.service';
@@ -14,7 +15,7 @@ export class RegisterFormComponent {
   form!: FormGroup;
 
   constructor(private fb:FormBuilder, private changeFormService : ChangeFormService,
-     private userService: UserService
+     private userService: UserService, private router: Router
     ){
     this.change = this.changeFormService.getData()
   }
@@ -47,11 +48,15 @@ export class RegisterFormComponent {
     u.name = user.name;
     u.email = user.email;
     u.password = user.password;
-    alert(u.name)
     if (this.form.valid) {
       this.userService.createUser(u).subscribe({
-        next: ()=> alert("usuario creado con exito"),
-        error: err => alert(err)
+        next: ()=> {
+          alert("usuario creado con exito");
+          setTimeout(()=>  this.router.navigate(['/home']), 700)
+        },
+        error: err => {
+          alert("no se ha podido crear el usuario")
+          console.log(err)}
         
       })
     }

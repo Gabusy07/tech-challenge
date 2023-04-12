@@ -1,4 +1,4 @@
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = "https://demo-production-4867.up.railway.app";
 
 export default baseUrl
