@@ -1,7 +1,7 @@
 export class SidebarOption {
 
-    constructor(){
-        this.name = "";  
+    constructor(name : String){
+        this.name = name;  
     }
 
     public id!: number;
