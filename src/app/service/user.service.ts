@@ -3,6 +3,7 @@ import baseUrl from './helper';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/User';
 import { Observable } from 'rxjs';
+import { UserRequest } from '../model/userRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -13,27 +14,26 @@ export class UserService {
 
   
   //metodos conexion con servidor crear, leer, loggear, eliminar, modificar
-  createUser(u: User): Observable<object>{
+  createUser(u: UserRequest): Observable<User>{
     const headers = this.getheader();
-    return this.request.post<User>(this.url, u, {headers});
+    return this.request.post<User>(this.url, u);
   }
 
 
 
   getUser(username:String):Observable<User>{
     const headers = this.getheader();
-    return this.request.get<User>(this.url+username); 
+    return this.request.get<User>(this.url+"/"+username); 
   }
 
   
   private getheader():HttpHeaders{
   
-    const token:string = localStorage['token'];
     const headers= new HttpHeaders({
       'Content-Type':  'application/json'
     })
     return headers;
   }
 
-  private url = `${baseUrl}/api/user/`;
+  private url = `${baseUrl}/api/user`;
 }

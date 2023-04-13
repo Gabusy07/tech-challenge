@@ -20,15 +20,16 @@
             <small *ngIf="Email?.hasError('required')" class="text-danger">El campo email no debe estar vacio</small>
             <small *ngIf="Email?.hasError('email')" class="text-danger">El email ingresado no es valido</small>
           </div>
-
+<!--
           <label>Contraseña:</label>
           <input name="password" [ngClass]="{'is-invalid' : Password?.errors && Password?.touched, 'is-valid' : !Password?.errors && Password?.touched}" class="form-control" type="password" formControlName="password" />
         
+          
           <div *ngIf="Password?.errors && Password?.touched">
             <small *ngIf="Password?.hasError('required')" class="text-danger">El campo contraseña no debe estar vacio</small>
             <small *ngIf="Password?.errors?.['minlength']" class="text-danger">El campo contraseña debe ser mas larga</small>
             <small *ngIf="Password?.errors?.['maxlength']" class="text-danger">El campo contraseña debe ser mas corta</small>
-         </div>
+         </div>-->
         
          <div class="text-center">
           <button type="submit" [disabled]="!form.valid" class="btn btn-light m-5 btn-block">Enviar</button>
