@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
-import { User } from 'src/app/model/User';
+
 import { LocalStorageService } from 'src/app/service/local-storage.service';
-import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +14,12 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
+    this.getUserNameFromStorage()
    
   }
 
   getUserNameFromStorage(): void{
-    this.storageService.getName()
+    this.userName = this.storageService.getName();
     
   }
 

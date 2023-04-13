@@ -15,7 +15,8 @@ export class RegisterFormComponent {
   form!: FormGroup;
 
   constructor(private fb:FormBuilder, private changeFormService : ChangeFormService,
-     private userService: UserService, private router: Router
+     private userService: UserService, private readonly router: Router
+
     ){
     this.change = this.changeFormService.getData()
   }
@@ -52,11 +53,11 @@ export class RegisterFormComponent {
       this.userService.createUser(u).subscribe({
         next: ()=> {
           alert("usuario creado con exito");
-          setTimeout(()=>  this.router.navigate(['/home']), 700)
+          setTimeout(()=> this.router.navigate(["/home"]), 700)
+
         },
-        error: err => {
-          alert("no se ha podido crear el usuario")
-          console.log(err)}
+        error: err => alert("no se ha podido registrar el usuario")
+
         
       })
     }

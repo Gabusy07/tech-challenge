@@ -9,7 +9,10 @@ import { SidebarService } from 'src/app/service/sidebar.service';
 })
 export class SidebarComponent {
 
-  constructor(private readonly sidebarService: SidebarService){}
+  options:SidebarOption[] = [];
+
+  constructor(private readonly sidebarService: SidebarService){
+  }
 
   ngOnInit(){
     this.chargeOptions();
@@ -17,10 +20,10 @@ export class SidebarComponent {
 
   chargeOptions():void{
     this.sidebarService.getAll().subscribe({
-      next: data =>  data.forEach(op => this.options.push(op))
-    })
+      next: data => this.options = data,
+    }
+    )
   };
 
-  options:SidebarOption[] = []
 
 }
