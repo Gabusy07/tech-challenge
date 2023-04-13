@@ -4,12 +4,14 @@ import { HomeComponent } from './layout/home/home.component';
 import { WelcomePageComponent } from './layout/welcome-page/welcome-page.component';
 import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { RegisterFormComponent } from './auth/register-form/register-form.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 const ROUTES: Routes = [
   { path: '', component: WelcomePageComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
+  { path: 'sidebar', component: SidebarComponent },
 ];
 
 @NgModule({
