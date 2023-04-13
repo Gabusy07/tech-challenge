@@ -26,7 +26,7 @@ export class RegisterFormComponent {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      //password: ['']
+      password: ['']
     });
   }
 
@@ -39,10 +39,10 @@ export class RegisterFormComponent {
     return this.form.get('email');
   }
 
-  /*
+  
   get Password(){
     return this.form.get('password');
-  }*/
+  }
 
   send() {
     const user:UserRequest = this.form.value;
@@ -50,7 +50,7 @@ export class RegisterFormComponent {
 
     u.name = user.name;
     u.email = user.email;
-    //u.password = user.password;
+    u.password = user.password;
       this.userService.createUser(u).subscribe({
         next: ()=> {
           alert("usuario creado con exito");
