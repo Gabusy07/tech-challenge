@@ -16,6 +16,7 @@ export class RegisterFormComponent {
 
   constructor(private fb:FormBuilder, private changeFormService : ChangeFormService,
      private userService: UserService, private readonly router: Router
+
     ){
     this.change = this.changeFormService.getData()
   }
@@ -56,6 +57,7 @@ export class RegisterFormComponent {
 
         },
         error: err => alert("no se ha podido registrar el usuario")
+
         
       })
     }
