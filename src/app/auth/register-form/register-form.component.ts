@@ -14,10 +14,9 @@ export class RegisterFormComponent {
 
   form!: FormGroup;
 
-  constructor(private fb:FormBuilder, private changeFormService : ChangeFormService,
-     private userService: UserService, private readonly router: Router
+  constructor(private fb:FormBuilder,
+     private userService: UserService, private readonly route: Router
     ){
-    this.change = this.changeFormService.getData()
   }
 
   ngOnInit() {
@@ -52,7 +51,7 @@ export class RegisterFormComponent {
       this.userService.createUser(u).subscribe({
         next: ()=> {
           alert("usuario creado con exito");
-          setTimeout(()=> this.router.navigate(["/home"]), 700)
+          setTimeout(()=> this.route.navigate(["/home"]), 700)
 
         },
         error: err => alert("no se ha podido registrar el usuario")
@@ -61,11 +60,9 @@ export class RegisterFormComponent {
     }
   }
 
-  changeForm(){
-    this.changeFormService.change();
-  }
 
-  
-  change: Boolean
+  goToLogin() {
+    this.route.navigate(['/login']);
+  }
 
 }

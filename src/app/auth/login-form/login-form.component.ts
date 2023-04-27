@@ -15,17 +15,20 @@ export class LoginFormComponent {
 
   public form:FormGroup
 
-  constructor(private readonly formBuilder : FormBuilder, private changeFormService : ChangeFormService,
+  constructor(private readonly formBuilder : FormBuilder,
     private userService: UserService, private route: Router, private storage : LocalStorageService
     ) {
 
     this.form = this.initForm();
-    this.change = this.changeFormService.getData()
     
    }
 
   ngOnInit(): void {
     
+  }
+
+  goToRegister() {
+    this.route.navigate(['/register']);
   }
 
   //construccion del reactiveForm
@@ -46,10 +49,6 @@ export class LoginFormComponent {
   }
 
 
-  changeForm(){
-    this.changeFormService.change()
-    
-  }
 
   send() {
     const user:User = this.form.value;
@@ -81,7 +80,6 @@ export class LoginFormComponent {
   }
 
   
-  change: Boolean
 }
 
 
