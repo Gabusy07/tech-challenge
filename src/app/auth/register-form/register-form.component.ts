@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { UserRequest } from 'src/app/model/userRequest';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -36,18 +37,18 @@ export class RegisterFormComponent {
     return this.form.get('email');
   }
 
+  
   get Password(){
     return this.form.get('password');
   }
 
   send() {
-    const user:User = this.form.value;
-    let u = new User();
+    const user:UserRequest = this.form.value;
+    let u = new UserRequest();
 
     u.name = user.name;
     u.email = user.email;
     u.password = user.password;
-    if (this.form.valid) {
       this.userService.createUser(u).subscribe({
         next: ()=> {
           alert("usuario creado con exito");
@@ -58,7 +59,7 @@ export class RegisterFormComponent {
 
         
       })
-    }
+    
   }
 
 
