@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
-import { ChangeFormService } from 'src/app/service/change-form.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -16,6 +15,7 @@ export class RegisterFormComponent {
 
   constructor(private fb:FormBuilder,
      private userService: UserService, private readonly route: Router
+
     ){
   }
 
@@ -55,6 +55,7 @@ export class RegisterFormComponent {
 
         },
         error: err => alert("no se ha podido registrar el usuario")
+
         
       })
     }
