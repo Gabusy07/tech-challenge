@@ -7,14 +7,9 @@
       <div>
           <h2>LOGO</h2>
       </div>
-      <div *ngIf="change ; else elseBlock" class="row">
-        <app-login-form></app-login-form> 
-          
+      <div class="row">
+        <router-outlet></router-outlet>    
       </div>
-      <ng-template #elseBlock>
-        <app-register-form></app-register-form>
-      </ng-template>
-      
   </div>
 </div>
 

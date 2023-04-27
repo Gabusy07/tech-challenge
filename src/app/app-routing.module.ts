@@ -7,10 +7,13 @@ import { RegisterFormComponent } from './auth/register-form/register-form.compon
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 const ROUTES: Routes = [
-  { path: '', component: WelcomePageComponent },
+  { path: '', component: WelcomePageComponent,
+    children: [
+      {path: 'login', component: LoginFormComponent},
+    { path: 'register', component: RegisterFormComponent }
+  ]
+ },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginFormComponent },
-  { path: 'register', component: RegisterFormComponent },
   { path: 'sidebar', component: SidebarComponent },
 ];
 
